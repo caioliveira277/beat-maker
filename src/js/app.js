@@ -17,9 +17,6 @@ class Drumkit {
   }
   activePad() {
     this.classList.toggle("active");
-    const padIndex = this.pare
-    console.dir(this);
-    console.dir(this.parentElement);
   }
   repeat() {
     let step = this.index % 8;
