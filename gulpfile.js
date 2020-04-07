@@ -14,7 +14,7 @@ gulp.task("minifyCss", () => {
 
 gulp.task("minifyJs", () => {
   return gulp
-    .src("src/app.js")
+    .src("src/js/app.js")
     .pipe(babel())
     .pipe(
       minify({
