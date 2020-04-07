@@ -105,7 +105,7 @@ class Drumkit {
     this.bpm = event.target.value;
     bpmText.innerText = event.target.value;
   }
-  updateInterval(event){
+  updateInterval(){
     clearInterval(this.isPlaying);
     this.isPlaying = null;
     const playBtn = document.querySelector("button.play");
@@ -148,7 +148,7 @@ drumKit.bpmSlider.addEventListener("change", function (event) {
 
 class Dropdown{
   constructor(){
-    this.helpButton = document.querySelector(".help-info");
+    this.helpButton = document.querySelector("span.help-info");
   }
   activeDropDown(){
     this.nextElementSibling.classList.toggle("active");
@@ -160,3 +160,33 @@ const dropdown = new Dropdown();
 /* Events */
 dropdown.helpButton.addEventListener("mouseenter", dropdown.activeDropDown);
 dropdown.helpButton.addEventListener("mouseleave", dropdown.activeDropDown);
+
+
+class ChangeTheme{
+  constructor(){
+    this.themeButton = document.querySelector("button.btn-theme");
+  }
+  active(){
+    if(this.themeButton.classList.toggle("active")){
+      this.themeButton.firstElementChild.innerText = "brightness_7";
+      this.setColor();
+    }else{
+      this.themeButton.firstElementChild.innerText = "brightness_5";
+      this.setColor();
+    };
+  }
+  setColor(){
+    if(this.themeButton.classList.contains("active")){
+      document.body.classList.add("dark-theme");
+    }else{
+      document.body.classList.remove("dark-theme");
+    }
+  }
+}
+
+const changeTheme = new ChangeTheme();
+
+/* Events */
+changeTheme.themeButton.addEventListener("click",  () => {
+  changeTheme.active();
+});
