@@ -24,6 +24,7 @@
     #df8a42 40px,
     #df8a42d5 80px
   );
+  --color-theme1-text: #6c6c6c;
 }
 i,
 svg {
@@ -32,6 +33,7 @@ svg {
 body {
   background-image: var(--color-theme1);
   font-family: monospace;
+  overflow-x: hidden;
 }
 
 main.sequencer {
@@ -109,7 +111,7 @@ section.hihat-track {
   cursor: pointer;
   font-size: 1rem;
   transition: all 500ms ease;
-  color: #6c6c6c;
+  color: var(--color-theme1-text);
 }
 .pad {
   transition: all 400ms cubic-bezier(0.71, 0.49, 0.49, 1.45);
@@ -126,7 +128,7 @@ button.play {
   font-size: 1.5rem;
   background: var(--color-theme1);
   box-shadow: var(--shadow-theme1-2);
-  color: #6c6c6c;
+  color: var(--color-theme1-text);
   border: none;
   cursor: pointer;
   margin-top: 3rem;
@@ -139,7 +141,7 @@ button.active {
 select {
   background-image: var(--color-theme1);
   box-shadow: var(--shadow-theme1-2);
-  color: #6c6c6c;
+  color: var(--color-theme1-text);
   padding: 1rem;
   font-size: 1rem;
   border: none;
@@ -184,7 +186,7 @@ input.bpm-slider::-moz-range-thumb {
   margin-top: -10px;
   margin-bottom: -10px;
   border-radius: 50%;
-  background: #c7d9ff;
+  background-image: var(--color-theme1);
   box-shadow: var(--shadow-theme1-2);
   cursor: pointer;
 }
@@ -192,7 +194,7 @@ input.bpm-slider::-moz-range-thumb {
   font-size: 1.5rem;
   font-family: monospace;
   margin: 2rem;
-  color: #6c6c6c;
+  color: var(--color-theme1-text);
 }
 
 @keyframes playTrack {
@@ -213,4 +215,62 @@ input.bpm-slider::-moz-range-thumb {
   100% {
     background-position: -10px;
   }
+}
+.dropdown-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+.dropdown-container > .box-info {
+  background: var(--color-theme1);
+  padding: 0.8rem;
+  border-radius: 5px;
+  color: var(--color-theme1-text);
+  font-size: 1.2rem;
+  position: relative;
+  width: 400px;
+  left: 40px;
+  box-shadow: 0px 5px 15px #58585885;
+  opacity: 0;
+  transform: translate(0);
+  transition: all 300ms ease;
+}
+.dropdown-container > .box-info.active {
+  opacity: 1;
+  transform: translate(1);
+  transition: all 300ms ease;
+}
+
+.help-info:hover {
+  background: #c7d9ff;
+}
+.help-info {
+  display: inline-block;
+  position: relative;
+  border-radius: 10px;
+  background: var(--color-theme1);
+  box-shadow: var(--shadow-theme1-2);
+}
+.help-info i {
+  font-size: 2rem;
+  color: var(--color-theme1-text);
+}
+figure.git-hub-link {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+  background: #2e2e2e;
+  transition: transform 200ms ease;
+}
+figure.git-hub-link:hover{
+  transform: scale(1.2);
+}
+figure.git-hub-link > a > img {
+  width: 64px;
+  transform: rotate(45deg);
+  margin: 18px;
 }

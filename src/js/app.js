@@ -144,3 +144,19 @@ drumKit.bpmSlider.addEventListener("input", function (event) {
 drumKit.bpmSlider.addEventListener("change", function (event) {
   drumKit.updateInterval(event);
 });
+
+
+class Dropdown{
+  constructor(){
+    this.helpButton = document.querySelector(".help-info");
+  }
+  activeDropDown(){
+    this.nextElementSibling.classList.toggle("active");
+  }
+}
+
+const dropdown = new Dropdown();
+
+/* Events */
+dropdown.helpButton.addEventListener("mouseenter", dropdown.activeDropDown);
+dropdown.helpButton.addEventListener("mouseleave", dropdown.activeDropDown);
