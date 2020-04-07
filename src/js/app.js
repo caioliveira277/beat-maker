@@ -17,6 +17,9 @@ class Drumkit {
   }
   activePad() {
     this.classList.toggle("active");
+    const padIndex = this.pare
+    console.dir(this);
+    console.dir(this.parentElement);
   }
   repeat() {
     let step = this.index % 8;
@@ -103,6 +106,7 @@ class Drumkit {
   changeBpm(event) {
     const bpmText = document.querySelector(".bpm-value");
     this.bpm = event.target.value;
+    localStorage.setItem("bpm", event.target.value);
     bpmText.innerText = event.target.value;
   }
   updateInterval(){
@@ -178,8 +182,10 @@ class ChangeTheme{
   setColor(){
     if(this.themeButton.classList.contains("active")){
       document.body.classList.add("dark-theme");
+      localStorage.setItem("darkTheme", 1);
     }else{
       document.body.classList.remove("dark-theme");
+      localStorage.setItem("darkTheme", 0);
     }
   }
 }

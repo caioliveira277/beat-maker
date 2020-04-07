@@ -27,6 +27,7 @@
   --shadow-theme1: -3px -3px 13px 3px #302b29, 4px 4px 15px 6px #0c0b0b;
   --shadow-theme1-2: -3px -3px 13px 3px #302b29, 4px 4px 15px 6px #0c0b0b;
   --background-active: #211e1d;
+  --shadow-active-pad: inset 0px 2px 0px 0px #302b29, -10px -10px 20px -5px #211e1d, 10px 10px 20px #0c0b0b;
 }
 i,
 svg {
@@ -40,6 +41,7 @@ body {
   --shadow-theme1: 0px 0px 0px 6px #dfe6f6, -10px -10px 20px -5px #f9fbfd,
   10px 10px 20px #a9bee8;
   --shadow-theme1-2: -10px -10px 20px -5px #f9fbfd, 10px 10px 20px #a9bee8;
+  --shadow-active-pad: inset 0px 2px 0px 0px #dfe6f6, -10px -10px 20px -5px #f9fbfd, 10px 10px 20px #a9bee8;
   --background-active: #c7d9ff;
 }
 
@@ -66,8 +68,7 @@ main.sequencer {
 }
 .kick-pad.active {
   opacity: 0.7;
-  box-shadow: inset 0px 2px 0px 0px #dfe6f6, -10px -10px 20px -5px #f9fbfd,
-    10px 10px 20px #a9bee8;
+  box-shadow: var(--shadow-active-pad)
 }
 .snare-pad {
   background-image: var(--color-snare);
@@ -75,16 +76,14 @@ main.sequencer {
 }
 .snare-pad.active {
   opacity: 0.7;
-  box-shadow: inset 0px 2px 0px 0px #dfe6f6, -10px -10px 20px -5px #f9fbfd,
-    10px 10px 20px #a9bee8;
+  box-shadow: var(--shadow-active-pad)
 }
 .hihat-pad {
   background-image: var(--color-hihat);
   box-shadow: var(--shadow-theme1);
 }
 .hihat-pad.active {
-  box-shadow: inset 0px 2px 0px 0px #dfe6f6, -10px -10px 20px -5px #f9fbfd,
-    10px 10px 20px #a9bee8;
+  box-shadow: var(--shadow-active-pad);
   opacity: 0.7;
 }
 section.kick-track,
