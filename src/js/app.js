@@ -15,8 +15,9 @@ class Drumkit {
     this.muteBtns = document.querySelectorAll("button.mute");
     this.bpmSlider = document.querySelector("input.bpm-slider");
   }
-  activePad() {
-    this.classList.toggle("active");
+  activePad(event) {
+    event.target.classList.toggle("active");
+    this.storeSequence(event);
   }
   repeat() {
     let step = this.index % 8;
@@ -65,6 +66,7 @@ class Drumkit {
   changeSound(event) {
     const selectionName = event.target.name;
     const selectionValue = event.target.value;
+    this.storeChangeSound(event);
     switch (selectionName) {
       case "kick-select":
         this.kickAudio.src = selectionValue;
@@ -88,6 +90,7 @@ class Drumkit {
       event.target.firstElementChild.innerText = "volume_up";
       isMuted = 1;
     }
+    this.storeMute(event);
     switch (muteIndex) {
       case "0":
         this.kickAudio.volume = isMuted;
@@ -106,13 +109,42 @@ class Drumkit {
     localStorage.setItem("bpm", event.target.value);
     bpmText.innerText = event.target.value;
   }
-  updateInterval(){
+  updateInterval() {
     clearInterval(this.isPlaying);
     this.isPlaying = null;
     const playBtn = document.querySelector("button.play");
-    if(playBtn.classList.contains("active")){
+    if (playBtn.classList.contains("active")) {
       this.start();
     }
+  }
+  storeSequence(event) {
+    const padIndex = event.target.parentNode.getAttribute("data-index");
+    const padPosition = [...event.target.parentNode.children].indexOf(
+      event.target
+    );
+    const getSequence =
+      JSON.parse(localStorage.getItem(`sequence${padIndex}`)) || [];
+    if (getSequence.indexOf(padPosition) != -1) {
+      getSequence.splice(getSequence.indexOf(padPosition), 1);
+    } else {
+      getSequence.push(padPosition);
+    }
+    localStorage.setItem(`sequence${padIndex}`, JSON.stringify(getSequence));
+  }
+  storeChangeSound(event) {
+    localStorage.setItem(event.target.name, event.target.value);
+  }
+  storeMute(event) {
+    let isMuted;
+    if (event.target.classList.contains("active")) {
+      isMuted = 0;
+    } else {
+      isMuted = 1;
+    }
+    localStorage.setItem(
+      "mute" + event.target.getAttribute("data-track"),
+      isMuted
+    );
   }
 }
 
@@ -120,7 +152,9 @@ const drumKit = new Drumkit();
 
 /* Events */
 drumKit.pads.forEach((pad) => {
-  pad.addEventListener("click", drumKit.activePad);
+  pad.addEventListener("click", (event) => {
+    drumKit.activePad(event);
+  });
   pad.addEventListener("animationend", function () {
     this.style.animation = "";
   });
@@ -146,12 +180,11 @@ drumKit.bpmSlider.addEventListener("change", function (event) {
   drumKit.updateInterval(event);
 });
 
-
-class Dropdown{
-  constructor(){
+class Dropdown {
+  constructor() {
     this.helpButton = document.querySelector("span.help-info");
   }
-  activeDropDown(){
+  activeDropDown() {
     this.nextElementSibling.classList.toggle("active");
   }
 }
@@ -162,25 +195,24 @@ const dropdown = new Dropdown();
 dropdown.helpButton.addEventListener("mouseenter", dropdown.activeDropDown);
 dropdown.helpButton.addEventListener("mouseleave", dropdown.activeDropDown);
 
-
-class ChangeTheme{
-  constructor(){
+class ChangeTheme {
+  constructor() {
     this.themeButton = document.querySelector("button.btn-theme");
   }
-  active(){
-    if(this.themeButton.classList.toggle("active")){
+  active() {
+    if (this.themeButton.classList.toggle("active")) {
       this.themeButton.firstElementChild.innerText = "brightness_7";
       this.setColor();
-    }else{
+    } else {
       this.themeButton.firstElementChild.innerText = "brightness_5";
       this.setColor();
-    };
+    }
   }
-  setColor(){
-    if(this.themeButton.classList.contains("active")){
+  setColor() {
+    if (this.themeButton.classList.contains("active")) {
       document.body.classList.add("dark-theme");
       localStorage.setItem("darkTheme", 1);
-    }else{
+    } else {
       document.body.classList.remove("dark-theme");
       localStorage.setItem("darkTheme", 0);
     }
@@ -190,6 +222,28 @@ class ChangeTheme{
 const changeTheme = new ChangeTheme();
 
 /* Events */
-changeTheme.themeButton.addEventListener("click",  () => {
+changeTheme.themeButton.addEventListener("click", () => {
   changeTheme.active();
 });
+
+class SetLastState extends Drumkit {
+  constructor() {
+    super();
+    this.sequence0 = localStorage.getItem("sequence0");
+    this.sequence1 = localStorage.getItem("sequence1");
+    this.sequence2 = localStorage.getItem("sequence2");
+    this.bpm = localStorage.getItem("bpm");
+    this.darkTheme = localStorage.getItem("darkTheme");
+    this.snareSelect = localStorage.getItem("snare-select");
+    this.hithatSelect = localStorage.getItem("hihat-select");
+    this.kickSelect = localStorage.getItem("kick-select");
+    this.mute0 = localStorage.getItem("mute0");
+    this.mute1 = localStorage.getItem("mute1");
+    this.mute2 = localStorage.getItem("mute2");
+  }
+  setState() {
+  }
+}
+const setLastState = new SetLastState();
+setLastState.setState();
+// document.addEventListener("DOMContentLoaded", setLastState);
