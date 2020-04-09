@@ -1,5 +1,5 @@
 # beatMaker
-The creative javascript course projeto 2 :fire:
+The creative javascript course - project 2 :fire:
 
 Scripts de compilação:
 > gulp minifyJs
