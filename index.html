@@ -26,6 +26,7 @@
 		</div>
 		<div class="change-theme">
 			<button class="btn-theme"><i class="material-icons">brightness_5</i></button>
+			<button class="btn-reset"><i class="material-icons">replay</i></button>
 		</div>
 		<figure class="git-hub-link">
 			<a href="https://github.com/caioliveira277/beatMaker" target="_blank" rel="noreferrer noopener">
@@ -51,7 +52,7 @@
 					<option value="./public/assets/sounds/kick-plain.wav">Kick Plain</option>
 					<option value="./public/assets/sounds/kick-big.wav">Kick Big</option>
 				</select>
-				<div class="kick" data-index="0">
+				<div class="kick pad-box" data-index="0">
 					<div class="pad kick-pad b0"></div>
 					<div class="pad kick-pad b1"></div>
 					<div class="pad kick-pad b2"></div>
@@ -78,7 +79,7 @@
 					<option value="./public/assets/sounds/snare-punch.wav">Snare Punch</option>
 					<option value="./public/assets/sounds/snare-big.wav">Snare Big</option>
 				</select>
-				<div class="snare" data-index="1">
+				<div class="snare pad-box" data-index="1">
 					<div class="pad snare-pad b0"></div>
 					<div class="pad snare-pad b1"></div>
 					<div class="pad snare-pad b2"></div>
@@ -105,7 +106,7 @@
 					<option value="./public/assets/sounds/hihat-ring.wav">Hihat Ring</option>
 					<option value="./public/assets/sounds/hihat-reso.wav">Hihat Reso</option>
 				</select>
-				<div class="hihat" data-index="2">
+				<div class="hihat pad-box" data-index="2">
 					<div class="pad hihat-pad b0"></div>
 					<div class="pad hihat-pad b1"></div>
 					<div class="pad hihat-pad b2"></div>
@@ -117,12 +118,14 @@
 				</div>
 			</div>
 		</section>
+	</main>
+	<div class="actions">
 		<button type="button" class="play">Play</button>
 		<div class="bpm">
 			<input type="range" class="bpm-slider" max="300" min="1" value="150">
 			<label>BPM: <span class="bpm-value">150</span></label>
 		</div>
-	</main>
+	</div>
 	<audio class="kick-sound" src="./public/assets/sounds/kick-classic.wav"></audio>
 	<audio class="snare-sound" src="./public/assets/sounds/snare-acoustic01.wav"></audio>
 	<audio class="hihat-sound" src="./public/assets/sounds/hihat-acoustic01.wav"></audio>

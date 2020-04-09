@@ -137,9 +137,9 @@ class Drumkit {
   storeMute(event) {
     let isMuted;
     if (event.target.classList.contains("active")) {
-      isMuted = 0;
-    } else {
       isMuted = 1;
+    } else {
+      isMuted = 0;
     }
     localStorage.setItem(
       "mute" + event.target.getAttribute("data-track"),
@@ -226,24 +226,92 @@ changeTheme.themeButton.addEventListener("click", () => {
   changeTheme.active();
 });
 
-class SetLastState extends Drumkit {
+class LastState extends Drumkit {
   constructor() {
     super();
-    this.sequence0 = localStorage.getItem("sequence0");
-    this.sequence1 = localStorage.getItem("sequence1");
-    this.sequence2 = localStorage.getItem("sequence2");
-    this.bpm = localStorage.getItem("bpm");
-    this.darkTheme = localStorage.getItem("darkTheme");
-    this.snareSelect = localStorage.getItem("snare-select");
-    this.hithatSelect = localStorage.getItem("hihat-select");
-    this.kickSelect = localStorage.getItem("kick-select");
-    this.mute0 = localStorage.getItem("mute0");
-    this.mute1 = localStorage.getItem("mute1");
-    this.mute2 = localStorage.getItem("mute2");
+    this.darkTheme = parseInt(localStorage.getItem("darkTheme"));
+    this.getBpm = localStorage.getItem("bpm");
+    this.mutes = [
+      parseInt(localStorage.getItem("mute0")),
+      parseInt(localStorage.getItem("mute1")),
+      parseInt(localStorage.getItem("mute2")),
+    ];
+    this.selecteds = {
+      "snare-select": localStorage.getItem("snare-select"),
+      "hihat-select": localStorage.getItem("hihat-select"),
+      "kick-select": localStorage.getItem("kick-select"),
+    };
+    this.sequences = () => {
+      return {
+        0: JSON.parse(localStorage.getItem("sequence0")),
+        1: JSON.parse(localStorage.getItem("sequence1")),
+        2: JSON.parse(localStorage.getItem("sequence2")),
+      };
+    };
+    this.padBox = document.querySelectorAll("div.pad-box");
+    this.btnReset = document.querySelector("button.btn-reset");
   }
   setState() {
+    if (this.darkTheme)
+      changeTheme.themeButton.dispatchEvent(new Event("click"));
+
+    this.muteBtns.forEach((_btn, key) => {
+      if (this.mutes[key]) this.muteBtns[key].dispatchEvent(new Event("click"));
+    });
+
+    if (this.getBpm) {
+      this.bpmSlider.value = this.getBpm;
+      this.bpmSlider.dispatchEvent(new Event("input"));
+    }
+
+    this.selects.forEach((item) => {
+      if (this.selecteds[item.name]) {
+        item.value = this.selecteds[item.name];
+        item.dispatchEvent(new Event("change"));
+      }
+    });
+
+    const getSequences = this.sequences(); 
+    for (let key in getSequences) {
+      let pads = this.padBox[key].children;
+      for (let index in pads) {
+        let padPosition = [...pads].indexOf(pads[index]);
+        if (getSequences[key]) {
+          if (getSequences[key].indexOf(padPosition) != -1) {
+            pads[index].classList.add("active");
+          }
+        }
+      }
+    }
+  }
+  resetPadState() {
+    const getSequences = this.sequences(); 
+    for (let key in getSequences) {
+      let pads = this.padBox[key].children;
+      for (let index in pads) {
+        let padPosition = [...pads].indexOf(pads[index]);
+        if (getSequences[key]) {
+          if (getSequences[key].indexOf(padPosition) != -1) {
+            pads[index].classList.remove("active");
+          }
+        }
+      }
+    }
+    localStorage.setItem("sequence0", "[]");
+    localStorage.setItem("sequence1", "[]");
+    localStorage.setItem("sequence2", "[]");
   }
 }
-const setLastState = new SetLastState();
-setLastState.setState();
-// document.addEventListener("DOMContentLoaded", setLastState);
+const lastState = new LastState();
+
+/* Events */
+document.addEventListener("DOMContentLoaded", () => {
+  lastState.setState();
+});
+lastState.btnReset.addEventListener("click", (event) => {
+  lastState.resetPadState(event);
+  event.target.firstChild.style.transform = "rotate(-360deg)";
+  event.target.firstChild.addEventListener("transitionend", event => {
+    event.target.style.transform = "rotate(0deg)";
+  })
+});
