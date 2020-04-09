@@ -33,7 +33,7 @@ body {
   --shadow-theme1-2: -10px -10px 20px -5px #f9fbfd, 10px 10px 20px #a9bee8;
   --shadow-active-pad: inset 0px 2px 0px 0px #dfe6f6,
     -10px -10px 20px -5px #f9fbfd, 10px 10px 20px #a9bee8;
-  --background-active: #c7d9ff;
+  --background-active: #c3cfe9;
 }
 .dark-theme {
   --color-theme1: #231f1e;
