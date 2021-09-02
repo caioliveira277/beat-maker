@@ -1,12 +1,60 @@
-# beatMaker
-The creative javascript course - project 2 :fire:
+# BeatMaker 🎧
+## Projeto elaborado no curso ***The creative javascript course***
 
-Scripts de compilação:
-> gulp minifyJs
- 
-> gulp minifyCss
+<br>
+<p float="left">
+ <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+ <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+ <img src="https://img.shields.io/badge/GULP-%23CF4647.svg?style=for-the-badge&logo=gulp&logoColor=white">
+ <img src="https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black">
+</p>
+<br>
 
+## Ideia 💡:
+Criar um projeto simulando um **controlador MIDI - beat maker**, onde seja possível criar toques customizados.
 
-Git Hub Page:
-https://caioliveira277.github.io/beatMaker/
+## Funcionalidades:
+- Ajustar BPM;
+- Resetar toques selecionados;
+- Mutar colunas
+- Alterar tipo do toque
+- Alterar tema para dark
 
+## Executando o projeto: 🚀
+Para executar e visualizar o projeto em **modo de desenvolvimento**, você precisará seguir as próximas etapas.
+
+### Pré-requisitos:
+Abaixo estará listada as ferramentas necessárias para o funcionamento do projeto.
+- **NodeJS versão 12** <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/nodejs.svg" height="20" /><br>
+  [Guia de instalação NodeJS](https://nodejs.org/en/).
+  
+### Instalando dependencias:
+Execute o comandos para instalar as dependencias do projeto.
+   ```sh
+   npm install
+   ```  
+  
+### Executando o projeto:
+Os scripts abaixo executam a compilação do projeto.
+  ```sh
+   gulp minifyJs
+   ```
+   ###### Comando para compilar e minificar o Javascript
+   
+   <br>
+   
+   ```sh
+   gulp minifyCss
+   ```
+   ###### Comando para compilar e minificar o CSS
+
+## Links: 🌐
+***Projeto online GitHub Pages:***<br>
+[Link do projeto](https://caioliveira277.github.io/beatMaker/)
+
+***Curso The Creative Javascript:***<br>
+[Link do curso](https://developedbyed.com/p/the-creative-javascript-course)
+
+---
+## Licença
+Este projeto está licenciado sob a licença [MIT] - consulte o arquivo LICENSE.md para obter detalhes
