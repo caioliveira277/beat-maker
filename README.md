@@ -26,7 +26,7 @@ Para executar e visualizar o projeto em **modo de desenvolvimento**, você preci
 ### Pré-requisitos:
 Abaixo estará listada as ferramentas necessárias para o funcionamento do projeto.
 - **NodeJS versão 12** <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/nodejs.svg" height="20" /><br>
-  [Guia de instalação NodeJS](https://nodejs.org/en/).
+  [<ins>Guia de instalação NodeJS</ins>](https://nodejs.org/en/).
   
 ### Instalando dependencias:
 Execute o comandos para instalar as dependencias do projeto.
@@ -48,12 +48,13 @@ Os scripts abaixo executam a compilação do projeto.
    ```
    ###### Comando para compilar e minificar o CSS
 
+---
 ## Links: 🌐
 ***Projeto online GitHub Pages:***<br>
-[Link do projeto](https://caioliveira277.github.io/beatMaker/)
+[<ins>Link do projeto</ins>](https://caioliveira277.github.io/beatMaker/)
 
 ***Curso The Creative Javascript:***<br>
-[Link do curso](https://developedbyed.com/p/the-creative-javascript-course)
+[<ins>Link do curso</ins>](https://developedbyed.com/p/the-creative-javascript-course)
 
 ---
 ## Licença
