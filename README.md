@@ -56,6 +56,9 @@ Os scripts abaixo executam a compilação do projeto.
 ***Curso The Creative Javascript:***<br>
 [<ins>Link do curso</ins>](https://developedbyed.com/p/the-creative-javascript-course)
 
+***Documentação Gulp:***<br>
+[<ins>Gulp docs</ins>](https://gulpjs.com/)
+
 ---
 ## Licença
 Este projeto está licenciado sob a licença [MIT] - consulte o arquivo LICENSE.md para obter detalhes
