@@ -16,9 +16,9 @@ Criar um projeto simulando um **controlador MIDI - beat maker**, onde seja poss�
 ## Funcionalidades:
 - Ajustar BPM;
 - Resetar toques selecionados;
-- Mutar colunas
-- Alterar tipo do toque
-- Alterar tema para dark
+- Mutar colunas;
+- Alterar tipo do toque;
+- Alterar tema para dark.
 
 ## Executando o projeto: 🚀
 Para executar e visualizar o projeto em **modo de desenvolvimento**, você precisará seguir as próximas etapas.
